@@ -20,7 +20,7 @@ import java.net.URL;
 public class DataFetchService extends AsyncTask {
 
 
-    String getUrl = "http://192.168.1.70:8080/BloodBankWeb/bloodbank/getalluser";
+    String getUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getalluser";
     URL url;
     public void getAllUser(){
         StringBuilder responseOutput = (StringBuilder) doInBackground(url);

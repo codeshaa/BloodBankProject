@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity  {
             Log.i("LoginActivity","Login Successful :User Set As:"+homeUser.getGivenName()+" " +homeUser.getSurname());
             TextView errorMessage=(TextView) findViewById(R.id.errormsg);
             errorMessage.setVisibility(View.INVISIBLE);
-            //Intent intent= new Intent(this,);
-            //startActivity(intent);
+            Intent intent= new Intent(this, HomePageActivity.class);
+            startActivity(intent);
         }
     }
 

@@ -20,7 +20,7 @@ import java.net.URL;
 
 public class SaveUserInterface extends AsyncTask {
 
-    String getUrl = "http://192.168.1.70:8080/BloodBankWeb/bloodbank/adduser";
+    String getUrl = "https://bloodbankweb.mybluemix.net/bloodbank/adduser";
     URL url;
     UserBean newUser;
     public void insertUser(UserBean newUser){
