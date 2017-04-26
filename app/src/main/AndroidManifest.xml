@@ -26,7 +26,8 @@
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".ProfileInfo" />
-        <activity android:name=".BloodBankHome"></activity>
+        <activity android:name=".BloodBankHome" />
+        <activity android:name=".HomePageActivity"></activity>
     </application>
 
 </manifest>
