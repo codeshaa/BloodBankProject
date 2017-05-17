@@ -10,6 +10,7 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="enter_username">Enter username</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -22,6 +23,16 @@
     <string name="age">You should be 18+ to donate blood</string>
     <string name="date_of_birth_dd_mm_yyyy">Date of Birth (dd/mm/yyyy)</string>
     <string name="personal_details">Personal Details</string>
+    <string name="mobile">Mobile</string>
+    <string name="address">Address</string>
+    <string name="bloodgroup">BloodGroup</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="person_name">Person Name</string>
+    <string name="location">Location</string>
+    <string name="arrow">arrow</string>
+    <string name="blood">blood</string>
+
 
 </resources>
 

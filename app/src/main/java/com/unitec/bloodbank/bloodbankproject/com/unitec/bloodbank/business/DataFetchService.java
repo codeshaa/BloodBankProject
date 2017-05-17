@@ -51,8 +51,8 @@ public class DataFetchService extends AsyncTask {
                     userBean.setSurname(jsonObject.getString("surname"));
                     userBean.setDob(jsonObject.getString("dob"));
                     userBean.setGenderAsString(jsonObject.getString("gender"));
-                    userBean.setPhone(jsonObject.getString("bloodGroup"));
-                    userBean.setBloodGroup(jsonObject.getString("phone"));
+                    userBean.setPhone(jsonObject.getString("phone"));
+                    userBean.setBloodGroup(jsonObject.getString("bloodGroup"));
                     userBean.setEmail(jsonObject.getString("email"));
                     userBean.setAddress(jsonObject.getString("address"));
                     userBean.setLoginName(jsonObject.getString("loginName"));
