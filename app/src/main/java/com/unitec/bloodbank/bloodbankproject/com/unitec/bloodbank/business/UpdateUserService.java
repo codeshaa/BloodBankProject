@@ -15,16 +15,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by JOEL on 4/23/2017.
+ * Created by JOEL on 5/18/2017.
  */
 
-public class SaveUserInterface extends AsyncTask {
+public class UpdateUserService extends AsyncTask {
 
-    String getUrl = "https://bloodbankweb.mybluemix.net/bloodbank/adduser";
+    String getUrl = "https://bloodbankweb.mybluemix.net/bloodbank/updateuser";
+
     URL url;
-    UserBean newUser;
-    public void insertUser(UserBean newUser){
-        this.newUser=newUser;
+    UserBean updatedUser;
+
+    public void UpdateUser(UserBean updatedUser){
+        this.updatedUser=updatedUser;
         StringBuilder responseOutput = (StringBuilder) doInBackground(url);
 
     }
@@ -34,14 +36,14 @@ public class SaveUserInterface extends AsyncTask {
 
         try {
             UserDataHelper.userBeans.removeAll(UserDataHelper.userBeans);
-
-            this.newUser=(UserBean)u[0];
+            this.updatedUser=(UserBean)u[0];
+Log.i("AAAAAAAAAAAAA",""+this.updatedUser.getUserId());
             URL url = new URL(getUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestProperty("Content-Type","application/json");
-          //  conn.setRequestProperty("Host", "android.bloodbank.gr");
+         //   conn.setRequestProperty("Host", "android.bloodbank.gr");
             conn.setRequestProperty("Accept", "application/json");
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
@@ -49,23 +51,24 @@ public class SaveUserInterface extends AsyncTask {
             conn.connect();
 
             JSONObject userJSON= new JSONObject();
-            userJSON.put("userId",newUser.getUserId());
-            userJSON.put("givenName",newUser.getGivenName());
-            userJSON.put("surname",newUser.getSurname());
-            userJSON.put("dob",newUser.getDob());
-            userJSON.put("gender",newUser.getGender());
-            userJSON.put("bloodGroup",newUser.getBloodGroup());
-            userJSON.put("phone",newUser.getPhone());
-            userJSON.put("email",newUser.getEmail());
-            userJSON.put("loginName",newUser.getLoginName());
-            userJSON.put("address",newUser.getAddress());
-            userJSON.put("password",newUser.getPassword());
-            userJSON.put("isDonor",newUser.isDonor());
+            userJSON.put("userId",updatedUser.getUserId());
+
+            userJSON.put("givenName",updatedUser.getGivenName());
+            userJSON.put("surname",updatedUser.getSurname());
+            userJSON.put("dob",updatedUser.getDob());
+            userJSON.put("gender",updatedUser.getGender());
+            userJSON.put("bloodGroup",updatedUser.getBloodGroup());
+            userJSON.put("phone",updatedUser.getPhone());
+            userJSON.put("email",updatedUser.getEmail());
+            userJSON.put("loginName",updatedUser.getLoginName());
+            userJSON.put("address",updatedUser.getAddress());
+            userJSON.put("password",updatedUser.getPassword());
+            userJSON.put("isDonor",updatedUser.isDonor());
             DataOutputStream printout = new DataOutputStream(conn.getOutputStream ());
             printout.writeBytes(userJSON.toString());
             printout.flush ();
             printout.close ();
-
+           // Log.i("SASSAAS",new BufferedReader(new InputStreamReader(conn.getErrorStream())).readLine());
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             while((line = br.readLine()) != null ) {

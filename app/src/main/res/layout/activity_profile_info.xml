@@ -6,4 +6,222 @@
     android:layout_height="match_parent"
     tools:context="com.unitec.bloodbank.bloodbankproject.ProfileInfo">
 
+
+    <ScrollView
+        android:id="@+id/updateProfileScroll"
+        android:layout_width="@dimen/expanddimention"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/constraintmargin"
+        android:layout_marginLeft="@dimen/constraintmargin"
+        android:layout_marginRight="@dimen/constraintmargin"
+        android:layout_marginStart="@dimen/constraintmargin"
+        android:scrollbars="vertical"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/uProfileTxtBx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update_profile"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textIsSelectable="true"
+                android:layout_marginBottom="@dimen/m_b"
+                android:layout_marginTop="@dimen/m_t"
+                android:textSize="@dimen/size" />
+
+            <TextView
+                android:id="@+id/personaldtls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:elevation="1dp"
+                android:text="@string/personal_details" />
+
+            <EditText
+                android:id="@+id/ugivenname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/given_name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/usurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/surname"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/udob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/date_of_birth_dd_mm_yyyy"
+                android:layout_marginBottom="20dp"
+                android:inputType="date" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ugender">
+
+                <RadioButton
+                    android:id="@+id/umaleradio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:duplicateParentState="false"
+                    android:text="@string/gender_male" />
+
+                <RadioButton
+                    android:id="@+id/ufemaleradio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+
+                <RadioButton
+                    android:id="@+id/uotherradio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/other" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/ubloodgroup"
+                android:layout_width="186dp"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true" />
+
+            <EditText
+                android:id="@+id/uphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/uemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Email (someone@example.com)"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/uaddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/user_address" />
+
+            <EditText
+                android:id="@+id/ustreetname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/street_name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/usuburb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/suburb"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/ucity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/city"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/upostcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/pin"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/ulbl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/login_details" />
+
+            <EditText
+                android:id="@+id/uloginname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/username"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/upassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/set_password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/uconfirmpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword" />
+
+            <CheckBox
+                android:id="@+id/ucheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/enlist_as_donor" />
+
+            <TextView
+                android:id="@+id/uformErrors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/uregister"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/holo_red_dark"
+                android:text="@string/register" />
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
