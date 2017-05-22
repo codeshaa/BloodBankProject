@@ -23,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -95,14 +95,14 @@
                 android:id="@+id/femaleradio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Female" />
+                android:text="@string/female_reg" />
 
             <RadioButton
                 android:id="@+id/otherradio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Other" />
+                android:text="@string/other_reg" />
             </RadioGroup>
 
             <Spinner
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone Number"
+                android:hint="@string/phone_number"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Email (someone@example.com)"
+                android:hint="@string/email_someone_example_com"
                 android:inputType="textEmailAddress" />
 
             <TextView
@@ -133,14 +133,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:text="User Address" />
+                android:text="@string/user_address_reg" />
 
             <EditText
                 android:id="@+id/streetname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Street Name"
+                android:hint="@string/street_name_reg"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Suburb"
+                android:hint="@string/suburb_reg"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -156,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="City"
+                android:hint="@string/city_reg"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -164,7 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Pin"
+                android:hint="@string/pin_reg"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -173,21 +173,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Login Details" />
+                android:text="@string/login_details_reg" />
 
             <EditText
                 android:id="@+id/loginname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Username"
+                android:hint="@string/username_reg"
                 android:inputType="textPersonName" />
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Set Password"
+                android:hint="@string/set_password_reg"
                 android:inputType="textPassword" />
 
             <EditText
@@ -195,7 +195,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password_reg"
                 android:inputType="textPassword" />
 
             <CheckBox
@@ -203,7 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Enlist as donor" />
+                android:text="@string/enlist_as_donor_reg" />
 
             <TextView
                 android:id="@+id/formErrors"
@@ -221,7 +221,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@android:color/holo_red_dark"
-                android:text="Register" />
+                android:text="@string/register_reg" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

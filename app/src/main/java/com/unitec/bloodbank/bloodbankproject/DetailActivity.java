@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,10 @@ import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserD
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String USER_ADDRESS = "com.unitec.bloodbank.address";
+    public static final String USER_BLOOD = "com.unitec.bloodbank.blood";
+    public static final String USER_NAME = "com.unitec.bloodbank.name";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +30,17 @@ public class DetailActivity extends AppCompatActivity {
         TextView nameText = (TextView) findViewById(R.id.name_text);
         TextView bloodText = (TextView) findViewById(R.id.text_blood);
         TextView addressText = (TextView) findViewById(R.id.text_address);
+        addressText.setMovementMethod(new ScrollingMovementMethod());
         TextView mobileText = (TextView) findViewById(R.id.text_mobile);
         TextView emailText = (TextView) findViewById(R.id.text_email);
         String email = null;
         String mobile = null;
+        String address = null;
+        String name = null;
+        String blood = null;
         ImageButton iButtonMobile = (ImageButton) findViewById(R.id.imageButtonMobile);
         ImageButton iButtonEmail = (ImageButton) findViewById(R.id.imageButtonEmail);
+        ImageButton iButtonLocation = (ImageButton) findViewById(R.id.imageButtonLocation);
 
         Intent intent = getIntent();
         int message = intent.getIntExtra(HomePageActivity.USER_ID, 0);
@@ -38,10 +48,12 @@ public class DetailActivity extends AppCompatActivity {
         for(UserBean userBean: UserDataHelper.userBeans){
 
             if (userBean.getUserId() == message){
-                String nameString = userBean.getGivenName() + " " + userBean.getSurname();
-                nameText.setText(nameString);
+                name = userBean.getGivenName() + " " + userBean.getSurname();
+                nameText.setText(name);
                 bloodText.setText(userBean.getBloodGroup());
+                blood = userBean.getBloodGroup();
                 addressText.setText(userBean.getAddress());
+                address = userBean.getAddress();
                 mobileText.setText(userBean.getPhone());
                 emailText.setText(userBean.getEmail());
                 email = userBean.getEmail();
@@ -71,7 +83,7 @@ public class DetailActivity extends AppCompatActivity {
                 intent.setType("text/html");
                 String[] recipients={finalEmail};
                 intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-                intent.putExtra(Intent.EXTRA_SUBJECT,"Blood request via Blood Bank App");
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Request for blood donation via Blood Bank App");
                 intent.putExtra(Intent.EXTRA_TEXT,"Hi, \n\n\tI would like to recieve your blood as I am in an emergency condition.");
 
                 try {
@@ -80,9 +92,24 @@ public class DetailActivity extends AppCompatActivity {
                     Log.i("Sent Email", "");
                 }
                 catch (android.content.ActivityNotFoundException ex){
-                    Toast.makeText(DetailActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "There are no email clients available.", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        final String finalAddress = address;
+        final String finalName = name;
+        final String finalBlood = blood;
+        iButtonLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, MapsActivity.class );
+                intent.putExtra(USER_ADDRESS, finalAddress);
+                intent.putExtra(USER_NAME, finalName);
+                intent.putExtra(USER_BLOOD, finalBlood);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
 
@@ -112,4 +139,5 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    }
+
+}

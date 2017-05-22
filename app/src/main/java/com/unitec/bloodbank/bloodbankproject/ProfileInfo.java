@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -196,5 +197,29 @@ public class ProfileInfo extends AppCompatActivity {
         }
 
         return parsedDate;
+    }
+
+    // Registering transition when device back button pressed
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    // Registering transition when menu back option selected
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch(id) {
+
+            // up button transition handling
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

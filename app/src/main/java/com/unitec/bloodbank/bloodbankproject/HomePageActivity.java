@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,20 +43,6 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // Changing Action bar style
-//        ActionBar actionBar = getActionBar();
-//        actionBar.setDisplayOptions(actionBar.getDisplayOptions() | ActionBar.DISPLAY_SHOW_CUSTOM);
-//        ImageView imageView = new ImageView(actionBar.getThemedContext());
-//        imageView.setScaleType(ImageView.ScaleType.CENTER);
-//        imageView.setImageResource(R.drawable.ic_donate_blood);
-//        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
-//                ActionBar.LayoutParams.WRAP_CONTENT,
-//                ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
-//                | Gravity.CENTER_VERTICAL);
-//        layoutParams.rightMargin = 40;
-//        imageView.setLayoutParams(layoutParams);
-//        actionBar.setCustomView(imageView);
-
         //Populate Blood type drop down
         this.bloodString = new String[] {
                 "My Blood", "A+", "A-", "B+", "B-", "AB+" , "AB-", "O+", "O-"
@@ -63,7 +52,7 @@ public class HomePageActivity extends AppCompatActivity {
         final ListView listView = (ListView) findViewById(R.id.donor_list);
 
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, bloodString);
+                R.layout.spinner_layout, bloodString);
         bloodSpinner.setAdapter(adapterSpinner);
 
         // showing appropriate donors with blood rules as per the selection
@@ -94,7 +83,7 @@ public class HomePageActivity extends AppCompatActivity {
                                             Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
                                             intent.putExtra(USER_ID, userBeanId);
                                             startActivity(intent);
-                                            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
                                         }
                                     });
                                 break;
@@ -250,19 +239,31 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-//        adapter = new ListViewAdapter(userBloodModels, getApplicationContext());
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                UserBean userBean = userBloodModels.get(i);
-//                int userBeanId = userBean.getUserId();
-//                Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
-//                intent.putExtra(USER_ID, userBeanId);
-//                startActivity(intent);
-//            }
-//        });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent= new Intent(HomePageActivity.this, ProfileInfo.class);
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.account:
+                startActivity(intent);
+                return true;
+            case R.id.exit:
+                finish();
+                System.exit(0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     // Getting list of blood donors with specific blood group

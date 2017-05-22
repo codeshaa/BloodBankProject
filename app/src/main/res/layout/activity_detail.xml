@@ -7,44 +7,76 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/name_text"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/name"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="36sp" />
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/text_blood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/bloodgroup"
-        android:background="@color/colorWhite"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/text_blood"
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:text="@string/bloodgroup"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_weight="0.03" />
 
-    <TextView
-        android:id="@+id/text_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/address"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="0dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/name"
+            android:gravity="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/colorWhite"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/text_address"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/address"
+            android:maxLines="1"
+            android:scrollbars="vertical"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/imageButtonLocation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.83"
+            android:background="@color/colorPrimaryDark"
+            android:contentDescription="@string/mobile"
+            android:tint="@android:color/background_light"
+            app:srcCompat="@drawable/ic_location_on_black_24dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
@@ -64,9 +96,9 @@
             android:layout_height="match_parent"
             android:layout_weight="2.83"
             android:background="@color/colorPrimaryDark"
+            android:contentDescription="@string/mobile"
             android:tint="@android:color/background_light"
-            app:srcCompat="@drawable/ic_call_black_24dp"
-            android:contentDescription="@string/mobile" />
+            app:srcCompat="@drawable/ic_call_black_24dp" />
 
     </LinearLayout>
 
@@ -75,7 +107,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/colorWhite"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 

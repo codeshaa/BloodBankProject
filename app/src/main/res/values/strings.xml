@@ -25,7 +25,7 @@
     <string name="personal_details">Personal Details</string>
     <string name="mobile">Mobile</string>
     <string name="address">Address</string>
-    <string name="bloodgroup">BloodGroup</string>
+    <string name="bloodgroup">BG+</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="person_name">Person Name</string>
@@ -46,6 +46,22 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="enlist_as_donor">Enlist as donor</string>
     <string name="u_register">Register</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="female_reg">Female</string>
+    <string name="other_reg">Other</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_someone_example_com">Email (someone@example.com)</string>
+    <string name="user_address_reg">User Address</string>
+    <string name="street_name_reg">Street Name</string>
+    <string name="suburb_reg">Suburb</string>
+    <string name="city_reg">City</string>
+    <string name="pin_reg">Pin</string>
+    <string name="login_details_reg">Login Details</string>
+    <string name="username_reg">Username</string>
+    <string name="set_password_reg">Set Password</string>
+    <string name="confirm_password_reg">Confirm Password</string>
+    <string name="enlist_as_donor_reg">Enlist as donor</string>
+    <string name="register_reg">Register</string>
 
 
 </resources>
