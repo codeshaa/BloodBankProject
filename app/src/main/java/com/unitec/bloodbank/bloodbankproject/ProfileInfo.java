@@ -162,7 +162,7 @@ public class ProfileInfo extends AppCompatActivity {
 
                 updatedUser.setGivenName(givenName);
                 updatedUser.setSurname(surname);
-                updatedUser.setDob(formatDate(dobDDMMYYYY,"dd/MM/yyyy","yyyy/MM/dd"));
+                updatedUser.setDob(dobDDMMYYYY);
                 updatedUser.setGenderAsString(radioButton.getText().toString());
                 updatedUser.setBloodGroup(bloodGroup);
                 updatedUser.setEmail(email);
