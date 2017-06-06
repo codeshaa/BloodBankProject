@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.DataFetchService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.FetchRequestService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserDataHelper;
 
 public class LoginActivity extends AppCompatActivity  {
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_login);
         if (isOnline()) {
             new DataFetchService().execute("http://localhost:8080/BloodBankWeb/bloodbank/getalluser");
+            new FetchRequestService().execute(homeUser);
             TextView errorMessage = (TextView) findViewById(R.id.errormsg);
             errorMessage.setVisibility(View.INVISIBLE);
             final EditText username = (EditText) findViewById(R.id.username);
