@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ public class DetailActivity extends AppCompatActivity {
         ImageButton iButtonMobile = (ImageButton) findViewById(R.id.imageButtonMobile);
         ImageButton iButtonEmail = (ImageButton) findViewById(R.id.imageButtonEmail);
         ImageButton iButtonLocation = (ImageButton) findViewById(R.id.imageButtonLocation);
+        ImageButton iButtonCompleted = (ImageButton) findViewById(R.id.imageButtonComplete);
+        LinearLayout completeLayout = (LinearLayout) findViewById(R.id.layout_completed);
 
         Intent intent = getIntent();
         int message = intent.getIntExtra(HomePageActivity.USER_ID, 0);
