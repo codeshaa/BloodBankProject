@@ -62,6 +62,8 @@
     <string name="confirm_password_reg">Confirm Password</string>
     <string name="enlist_as_donor_reg">Enlist as donor</string>
     <string name="register_reg">Register</string>
+    <string name="completed">Completed</string>
+    <string name="request">Request</string>
 
 
 </resources>

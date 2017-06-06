@@ -75,6 +75,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.unitec.bloodbank.bloodbankproject.DetailActivity" />
         </activity>
+        <activity android:name=".DonorDetails" />
+        <activity android:name=".DonorDetailsDeclined"></activity>
     </application>
 
 </manifest>
