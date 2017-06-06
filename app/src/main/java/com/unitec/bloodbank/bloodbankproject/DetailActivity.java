@@ -20,7 +20,7 @@ public class DetailActivity extends AppCompatActivity {
     public static final String USER_ADDRESS = "com.unitec.bloodbank.address";
     public static final String USER_BLOOD = "com.unitec.bloodbank.blood";
     public static final String USER_NAME = "com.unitec.bloodbank.name";
-
+//ss
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
