@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_blood"
+            android:layout_width="69dp"
+            android:layout_height="53dp"
+            android:background="@color/colorWhite"
+            android:text="@string/bloodgroup"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/requester"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/text_address"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/address"
+            android:maxLines="1"
+            android:scrollbars="vertical"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/imageButtonLocation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.83"
+            android:background="@color/colorPrimaryDark"
+            android:contentDescription="@string/mobile"
+            android:tint="@android:color/background_light"
+            app:srcCompat="@drawable/ic_location_on_black_24dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/requester_message"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_weight="0.66"
+        android:background="@color/colorWhite"
+        android:text="@string/display_requester_message"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/layout_request_decline"
+            android:layout_width="151dp"
+            android:layout_height="68dp"
+            android:layout_weight="0.29"
+            android:background="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonDecline"
+                android:layout_width="59dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:contentDescription="@string/request"
+                android:tint="@android:color/background_light"
+                app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+            <TextView
+                android:id="@+id/declinetText"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/decline"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_request_accept"
+            android:layout_width="151dp"
+            android:layout_height="68dp"
+            android:layout_weight="0.29"
+            android:layout_marginStart="20dp"
+            android:background="@color/colorDarkGreen"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonAccept"
+                android:layout_width="59dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorDarkGreen"
+                android:contentDescription="@string/request"
+                android:tint="@android:color/background_light"
+                app:srcCompat="@drawable/ic_done_black_24dp" />
+
+            <TextView
+                android:id="@+id/acceptText"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/accept"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
