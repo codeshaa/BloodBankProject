@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.ListViewAdapter;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.RequesterListViewAdapter;
 
 public class RequestList extends Activity {
 
-    private ListViewAdapter adapter;
+    private RequesterListViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,8 @@ public class RequestList extends Activity {
 
         final ListView listView = (ListView) findViewById(R.id.request_list);
 
-        // initiate listview adapter
+        // initiate requester listview adapter
+ //       adapter = new RequesterListViewAdapter( put userbean list with request here, getApplicationContext());
 
 
         // set adapter

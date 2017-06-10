@@ -78,7 +78,11 @@
         <activity android:name=".DonorDetails" />
         <activity android:name=".DonorDetailsDeclined" />
         <activity android:name=".RequesterDetail" />
-        <activity android:name=".RequestList"></activity>
+        <activity android:name=".RequestList" />
+        <activity
+            android:name=".MyRequestsActivity"
+            android:label="@string/title_activity_my_requests"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
