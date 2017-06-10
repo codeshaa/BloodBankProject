@@ -68,6 +68,9 @@
     <string name="decline">Decline</string>
     <string name="accept">Accept</string>
     <string name="requester">Requester</string>
+    <string name="requester_name">Requester Name</string>
+    <string name="request_status">Request status</string>
+    <string name="incoming_requests">Incoming Requests</string>
 
 
 </resources>

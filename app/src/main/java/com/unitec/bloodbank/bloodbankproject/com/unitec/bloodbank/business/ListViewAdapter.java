@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.content.DialogInterface;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,7 +72,7 @@ public class ListViewAdapter extends ArrayAdapter<UserBean> implements View.OnCl
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.listview_item, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.txtName = (TextView) convertView.findViewById(R.id.req_status);
             viewHolder.txtLocation = (TextView) convertView.findViewById(R.id.location);
             viewHolder.txtBlood = (TextView) convertView.findViewById(R.id.blood_group);
             viewHolder.arrow = (ImageView) convertView.findViewById(R.id.item_arrow);
