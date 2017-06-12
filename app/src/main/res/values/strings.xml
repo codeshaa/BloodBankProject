@@ -64,6 +64,7 @@
     <string name="register_reg">Register</string>
     <string name="completed">Completed</string>
     <string name="request">Request</string>
+    <string name="title_activity_user_dashboard">Dashboard</string>
 
 
 </resources>

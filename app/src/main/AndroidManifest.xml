@@ -76,7 +76,22 @@
                 android:value="com.unitec.bloodbank.bloodbankproject.DetailActivity" />
         </activity>
         <activity android:name=".DonorDetails" />
-        <activity android:name=".DonorDetailsDeclined"></activity>
+        <activity android:name=".DonorDetailsDeclined" />
+        <activity android:name=".RequesterDetail" />
+        <activity android:name=".RequestList" />
+        <activity
+            android:name=".MyRequestsActivity"
+            android:label="@string/title_activity_my_requests"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".UserDashboard"
+            android:label="@string/title_activity_user_dashboard"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.unitec.bloodbank.bloodbankproject.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>

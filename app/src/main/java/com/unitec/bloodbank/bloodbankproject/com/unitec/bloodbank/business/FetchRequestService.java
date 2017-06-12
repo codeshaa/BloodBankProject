@@ -3,6 +3,7 @@ package com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.unitec.bloodbank.bloodbankproject.LoginActivity;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
 
@@ -21,15 +22,17 @@ import java.net.URL;
 
 public class FetchRequestService extends AsyncTask {
 
-    String getDonorUrl = "https://bloodbankweb.mybluemix.net/bloodbank/updaterequest";
-    String getRequesterUrl = "https://bloodbankweb.mybluemix.net/bloodbank/updaterequest";
+    String getDonorUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getdonorrequests";
+    String getRequesterUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getuserrequests";
 
     @Override
     protected Object doInBackground(Object... u) {
 
         StringBuilder responseOutput = new StringBuilder();
 
-        UserBean user=(UserBean)u[0];
+        UserBean user= LoginActivity.homeUser;
+        Log.i("User data fetch compl",""+user.getUserId());
+
         try {
             URL donorUrl = new URL(getDonorUrl);
             URL requesterUrl = new URL(getRequesterUrl);
@@ -71,6 +74,7 @@ public class FetchRequestService extends AsyncTask {
                 responseOutput.append(line);
 
                 JSONArray jsonArray = new JSONArray(line);
+                Log.i("Donor Requests",""+jsonArray);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject= jsonArray.getJSONObject(i);
                     RequestBean allRequesr= new RequestBean();
@@ -110,6 +114,8 @@ public class FetchRequestService extends AsyncTask {
                 responseOutput.append(line);
 
                 JSONArray jsonArray = new JSONArray(line);
+                Log.i("Donor Requests",""+jsonArray);
+
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject= jsonArray.getJSONObject(i);
                     RequestBean allRequesr= new RequestBean();

@@ -29,7 +29,8 @@ public class LoginActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_login);
         if (isOnline()) {
             new DataFetchService().execute("http://localhost:8080/BloodBankWeb/bloodbank/getalluser");
-            new FetchRequestService().execute(homeUser);
+            Log.i("User data fetch compl","");
+
             TextView errorMessage = (TextView) findViewById(R.id.errormsg);
             errorMessage.setVisibility(View.INVISIBLE);
             final EditText username = (EditText) findViewById(R.id.username);
@@ -39,8 +40,11 @@ public class LoginActivity extends AppCompatActivity  {
                 @Override
                 public void onClick(View view) {
                     attemptLogin(username.getText().toString(), password.getText().toString());
+                    Log.i("Req data fetch begn","");
+                    new FetchRequestService().execute(homeUser);
                 }
             });
+
             Button registerUserButton = (Button) findViewById(R.id.register);
             registerUserButton.setOnClickListener(new OnClickListener() {
                 @Override
@@ -80,7 +84,7 @@ public class LoginActivity extends AppCompatActivity  {
             Log.i("LoginActivity","Login Successful :User Set As:"+homeUser.getGivenName()+" " +homeUser.getSurname()); 
             TextView errorMessage=(TextView) findViewById(R.id.errormsg);
             errorMessage.setVisibility(View.INVISIBLE);
-            Intent intent= new Intent(this, HomePageActivity.class);
+            Intent intent= new Intent(this, UserDashboard.class);
            // Intent intent= new Intent(this, ProfileInfo.class);
             startActivity(intent);
             finish();

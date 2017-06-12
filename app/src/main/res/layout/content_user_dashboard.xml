@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.unitec.bloodbank.bloodbankproject.UserDashboard"
+    tools:showIn="@layout/activity_user_dashboard">
+
+
+    <LinearLayout
+        android:layout_width="378dp"
+        android:layout_height="419dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105">
+
+        <LinearLayout
+            android:id="@+id/myReqLayout"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.13"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/myreqimg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.01"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_move_to_inbox_black_24dp" />
+
+            <TextView
+                android:id="@+id/myreq"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.03"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="My Request"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/userReqLayout"
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.11"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/userreqimg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.01"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_add_alert_black_24dp" />
+
+            <TextView
+                android:id="@+id/userreq"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.03"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="User Request"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/updateProfileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.15"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/updateproimg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.01"
+                android:tint="@color/colorWhite"
+                app:srcCompat="@drawable/ic_person_black_24dp" />
+
+            <TextView
+                android:id="@+id/updatepro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.03"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Update Profile"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
