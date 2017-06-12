@@ -28,7 +28,7 @@
     <string name="bloodgroup">BG+</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
-    <string name="person_name">Person Name</string>
+    <string name="donor_name">Donor Name</string>
     <string name="location">Location</string>
     <string name="arrow">arrow</string>
     <string name="blood">blood</string>
@@ -64,7 +64,16 @@
     <string name="register_reg">Register</string>
     <string name="completed">Completed</string>
     <string name="request">Request</string>
-    <string name="title_activity_user_dashboard">Dashboard</string>
+    <string name="display_requester_message">Display requester message</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
+    <string name="requester">Requester</string>
+    <string name="requester_name">Requester Name</string>
+    <string name="request_status">Request status</string>
+    <string name="incoming_requests">Incoming Requests</string>
+    <string name="title_activity_my_requests">My Requests</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 
 </resources>

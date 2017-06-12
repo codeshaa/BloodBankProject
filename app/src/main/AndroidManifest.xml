@@ -85,7 +85,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".UserDashboard"
-            android:label="@string/title_activity_user_dashboard"
+            android:label="User Dashboard"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
