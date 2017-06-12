@@ -10,22 +10,22 @@
     android:paddingEnd="0dp">
 
     <TextView
-        android:id="@+id/donor_name"
+        android:id="@+id/req_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/donor_name"
+        android:text="@string/request_status"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorWhite"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/donor_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/donor_name"
+        android:layout_below="@+id/req_status"
         android:layout_marginTop="5dp"
-        android:text="@string/location"
+        android:text="@string/donor_name"
         android:textColor="@color/colorWhite"
         android:textSize="18sp" />
 
