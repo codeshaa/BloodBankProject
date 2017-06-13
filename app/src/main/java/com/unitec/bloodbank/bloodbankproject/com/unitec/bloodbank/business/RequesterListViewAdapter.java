@@ -1,7 +1,9 @@
 package com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -11,8 +13,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.unitec.bloodbank.bloodbankproject.DetailActivity;
+import com.unitec.bloodbank.bloodbankproject.DonorDetailsDeclined;
 import com.unitec.bloodbank.bloodbankproject.R;
-import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
+import com.unitec.bloodbank.bloodbankproject.RequesterDetail;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 
 import java.util.ArrayList;
 
@@ -20,11 +25,12 @@ import java.util.ArrayList;
  * Created by SHAANZbook on 11/06/2017.
  */
 
-public class RequesterListViewAdapter extends ArrayAdapter<UserBean> implements View.OnClickListener {
+public class RequesterListViewAdapter extends ArrayAdapter<RequestBean> implements View.OnClickListener {
 
-    private ArrayList<UserBean> dataSet;
+    private ArrayList<RequestBean> dataSet;
     Context mContext;
-
+    public static final String USER_ID = "com.unitec.bloodbank";
+    public static final String REQUEST_ID = "com.unitec.bloodbank";
     // View lookup cache
     private static class ViewHolder {
         TextView txtRequestStatus;
@@ -33,7 +39,7 @@ public class RequesterListViewAdapter extends ArrayAdapter<UserBean> implements 
         ImageView arrow;
     }
 
-    public RequesterListViewAdapter(ArrayList<UserBean> data, Context context) {
+    public RequesterListViewAdapter(ArrayList<RequestBean> data, Context context) {
         super(context, R.layout.request_list_item, data);
         this.dataSet = data;
         this.mContext=context;
@@ -45,14 +51,21 @@ public class RequesterListViewAdapter extends ArrayAdapter<UserBean> implements 
 
         int position=(Integer) v.getTag();
         Object object= getItem(position);
-        UserBean dataModel=(UserBean) object;
+        RequestBean dataModel=(RequestBean) object;
 
         switch (v.getId())
         {
             case R.id.item_arrow:
-                Snackbar.make(v, "Name: " +dataModel.getGivenName(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-                break;
+                                      Log.i("Hiiii","WWWW");
+                                      if (dataModel.getStatus()==0){
+                                       /* Intent intent= new Intent(mContext,RequesterDetail.class);
+                                        intent.putExtra(USER_ID, dataModel.getRequester().getUserId());
+                                        intent.putExtra(REQUEST_ID, dataModel.getRequestId());
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                          v.getContext().startActivity(intent);*/
+                                      }
+                                        break;
         }
     }
 
@@ -61,7 +74,7 @@ public class RequesterListViewAdapter extends ArrayAdapter<UserBean> implements 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        UserBean dataModel = (UserBean) getItem(position);
+        RequestBean dataModel = (RequestBean) getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         RequesterListViewAdapter.ViewHolder viewHolder; // view lookup cache stored in tag
 
@@ -90,8 +103,13 @@ public class RequesterListViewAdapter extends ArrayAdapter<UserBean> implements 
         lastPosition = position;
 
 //        viewHolder.txtRequestStatus.setText(dataModel.getStatus());
-        viewHolder.txtRequester.setText(dataModel.getGivenName());
-        viewHolder.txtBlood.setText(dataModel.getBloodGroup());
+        viewHolder.txtRequester.setText(dataModel.getRequester().getGivenName());
+        viewHolder.txtBlood.setText(dataModel.getRequester().getBloodGroup());
+        switch(dataModel.getStatus()){
+            case 0:         viewHolder.txtRequestStatus.setText("Pending");break;
+            case 1:         viewHolder.txtRequestStatus.setText("Accepted");break;
+            case 2:         viewHolder.txtRequestStatus.setText("Declined");break;
+        }
         viewHolder.arrow.setOnClickListener(this);
         viewHolder.arrow.setTag(position);
         // Return the completed view to render on screen

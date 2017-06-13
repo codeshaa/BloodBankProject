@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,8 +21,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.FetchRequestService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.ListViewAdapter;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.RequestListViewAdapter;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserDataHelper;
 
 public class MyRequestsActivity extends AppCompatActivity {
 
@@ -86,6 +89,7 @@ public class MyRequestsActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
@@ -123,18 +127,26 @@ public class MyRequestsActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_my_requests, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
             ListView listView = (ListView) rootView.findViewById(R.id.request_list);
 
+            Log.i("SECTION NUMBER","---"+getArguments().getInt(ARG_SECTION_NUMBER));
             // initiate request listview adapter
-
-//            adapter = new RequestListViewAdapter(  put requestbean array here, this.getContext());
-
-
+            switch(getArguments().getInt(ARG_SECTION_NUMBER)){
+                case 1: adapter = new RequestListViewAdapter(UserDataHelper.userPendingRequests, this.getContext());
+                        Log.i("HAAAAAA","-1-"+UserDataHelper.userPendingRequests.size());
+                        break;
+                case 2: adapter = new RequestListViewAdapter(UserDataHelper.userAcceptedRequests, this.getContext());
+                         Log.i("HAAAAAA","-2-"+UserDataHelper.userAcceptedRequests.size());
+                         break;
+                case 3: adapter = new RequestListViewAdapter(UserDataHelper.userDeclinedRequests, this.getContext());
+                        Log.i("HAAAAAA","-3-"+UserDataHelper.userDeclinedRequests.size());
+                         break;
+            }
             //set list adapter
             listView.setAdapter(adapter);
+
+
             return rootView;
         }
     }
@@ -166,7 +178,7 @@ public class MyRequestsActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "PENDING REQUESTS";
+                    return "PENDING";
                 case 1:
                     return "ACCEPTED";
                 case 2:
@@ -174,5 +186,11 @@ public class MyRequestsActivity extends AppCompatActivity {
             }
             return null;
         }
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

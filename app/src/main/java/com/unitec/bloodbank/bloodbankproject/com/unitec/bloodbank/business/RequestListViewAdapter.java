@@ -1,6 +1,9 @@
 package com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -10,7 +13,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.unitec.bloodbank.bloodbankproject.DetailActivity;
+import com.unitec.bloodbank.bloodbankproject.DonorDetailsDeclined;
 import com.unitec.bloodbank.bloodbankproject.R;
+import com.unitec.bloodbank.bloodbankproject.UserDashboard;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 
 import java.util.ArrayList;
@@ -23,6 +29,10 @@ public class RequestListViewAdapter extends ArrayAdapter<RequestBean> implements
 
     private ArrayList<RequestBean> dataSet;
     Context mContext;
+    public static final String USER_ID = "com.unitec.bloodbank";
+    public static final String REQUEST_ID = "com.unitec.bloodbank";
+
+
 
     // View lookup cache
     private static class ViewHolder {
@@ -44,15 +54,28 @@ public class RequestListViewAdapter extends ArrayAdapter<RequestBean> implements
 
         int position=(Integer) v.getTag();
         Object object= getItem(position);
-  //      RequestBean dataModel=(UserBean) object;
+        RequestBean dataModel=(RequestBean) object;
 
-//        switch (v.getId())
-//        {
-//            case R.id.item_arrow:
-//                Snackbar.make(v, "Name: " +dataModel.getGivenName(), Snackbar.LENGTH_LONG)
-//                        .setAction("No action", null).show();
-//                break;
-//        }
+      switch (v.getId())
+        {
+           case R.id.item_arrow:
+                                if(dataModel.getStatus()==0) {
+                                    Snackbar.make(v, "Request is pending aproval with " + dataModel.getDonor().getGivenName(), Snackbar.LENGTH_LONG)
+                                            .setAction("No action", null).show();
+                                }
+                                else if (dataModel.getStatus()==2){
+                                    Intent intent= new Intent(mContext,DonorDetailsDeclined.class);
+                                    intent.putExtra(REQUEST_ID, dataModel.getRequestId());
+                                    v.getContext().startActivity(intent);
+                                }
+                                else{
+                                    Intent intent= new Intent(mContext,DetailActivity.class);
+                                    intent.putExtra(REQUEST_ID, dataModel.getRequestId());
+                                    v.getContext().startActivity(intent);
+                                }
+
+                break;
+   }
     }
 
     private int lastPosition = -1;
@@ -60,7 +83,9 @@ public class RequestListViewAdapter extends ArrayAdapter<RequestBean> implements
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
+        Log.i("YOOOOOOOOo","WWW");
         RequestBean dataModel = getItem(position);
+        Log.i("YOOOOOOOOo","WWW"+dataModel);
         // Check if an existing view is being reused, otherwise inflate the view
         RequestListViewAdapter.ViewHolder viewHolder; // view lookup cache stored in tag
 
@@ -88,9 +113,9 @@ public class RequestListViewAdapter extends ArrayAdapter<RequestBean> implements
         result.startAnimation(animation);
         lastPosition = position;
 
-//        viewHolder.txtRequestStatus.setText(dataModel.getGivenName());
-//        viewHolder.txtDonorName.setText(dataModel.getAddress());
-//        viewHolder.txtBlood.setText(dataModel.getBloodGroup());
+        viewHolder.txtRequestStatus.setText(dataModel.getDonor().getAddress());
+        viewHolder.txtDonorName.setText(dataModel.getDonor().getGivenName());
+        viewHolder.txtBlood.setText(dataModel.getDonor().getBloodGroup());
         viewHolder.arrow.setOnClickListener(this);
         viewHolder.arrow.setTag(position);
         // Return the completed view to render on screen

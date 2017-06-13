@@ -13,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.RequestListViewAdapter;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UpdateRequestService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserDataHelper;
 
 public class DetailActivity extends AppCompatActivity {
@@ -21,7 +24,8 @@ public class DetailActivity extends AppCompatActivity {
     public static final String USER_ADDRESS = "com.unitec.bloodbank.address";
     public static final String USER_BLOOD = "com.unitec.bloodbank.blood";
     public static final String USER_NAME = "com.unitec.bloodbank.name";
-//ss
+    protected static RequestBean requestBean;
+    protected static UserBean donorBean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,29 +46,31 @@ public class DetailActivity extends AppCompatActivity {
         ImageButton iButtonMobile = (ImageButton) findViewById(R.id.imageButtonMobile);
         ImageButton iButtonEmail = (ImageButton) findViewById(R.id.imageButtonEmail);
         ImageButton iButtonLocation = (ImageButton) findViewById(R.id.imageButtonLocation);
-        ImageButton iButtonCompleted = (ImageButton) findViewById(R.id.imageButtonComplete);
+        LinearLayout iButtonCompleted = (LinearLayout) findViewById(R.id.layout_completed);
         LinearLayout completeLayout = (LinearLayout) findViewById(R.id.layout_completed);
 
         Intent intent = getIntent();
-        int message = intent.getIntExtra(HomePageActivity.USER_ID, 0);
-
-        for(UserBean userBean: UserDataHelper.userBeans){
-
-            if (userBean.getUserId() == message){
-                name = userBean.getGivenName() + " " + userBean.getSurname();
-                nameText.setText(name);
-                bloodText.setText(userBean.getBloodGroup());
-                blood = userBean.getBloodGroup();
-                addressText.setText(userBean.getAddress());
-                address = userBean.getAddress();
-                mobileText.setText(userBean.getPhone());
-                emailText.setText(userBean.getEmail());
-                email = userBean.getEmail();
-                mobile = "tel:" + userBean.getPhone();
+        int requestId = intent.getIntExtra(RequestListViewAdapter.REQUEST_ID,0);
+        for(RequestBean requestBean:UserDataHelper.userRequests){
+            if(requestBean.getRequestId()==requestId){
+                this.requestBean=requestBean;
+                this.donorBean=requestBean.getDonor();
                 break;
-
-                }
             }
+        }
+                if (this.donorBean !=null){
+                 name = donorBean.getGivenName() + " " + donorBean.getSurname();
+                 nameText.setText(name);
+                 bloodText.setText(donorBean.getBloodGroup());
+                 blood = donorBean.getBloodGroup();
+                 addressText.setText(donorBean.getAddress());
+                 address = donorBean.getAddress();
+                 mobileText.setText(donorBean.getPhone());
+                 emailText.setText(donorBean.getEmail());
+                 email = donorBean.getEmail();
+                 mobile = "tel:" + donorBean.getPhone();
+                }
+
 
         final String finalMobile = mobile;
         iButtonMobile.setOnClickListener(new View.OnClickListener() {
@@ -116,13 +122,25 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        iButtonCompleted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                   requestBean.setStatus(3);
+                   new UpdateRequestService().execute(requestBean);
+                   Intent home = new Intent(DetailActivity.this, UserDashboard.class );
+                   startActivity(home);
+
+            }
+        });
         }
 
 
     // Registering transition when device back button pressed
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent home = new Intent(DetailActivity.this, UserDashboard.class );
+        startActivity(home);
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 

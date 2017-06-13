@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserD
 public class LoginActivity extends AppCompatActivity  {
 
     public static UserBean homeUser;
+    public static ProgressBar bar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +39,12 @@ public class LoginActivity extends AppCompatActivity  {
             final EditText username = (EditText) findViewById(R.id.username);
             final EditText password = (EditText) findViewById(R.id.password);
             Button signInButton = (Button) findViewById(R.id.email_sign_in_button);
+            bar=(ProgressBar)findViewById(R.id.login_progress);
             signInButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     attemptLogin(username.getText().toString(), password.getText().toString());
-                    Log.i("Req data fetch begn","");
-                    new FetchRequestService().execute(homeUser);
+
                 }
             });
 
@@ -84,6 +87,7 @@ public class LoginActivity extends AppCompatActivity  {
             Log.i("LoginActivity","Login Successful :User Set As:"+homeUser.getGivenName()+" " +homeUser.getSurname()); 
             TextView errorMessage=(TextView) findViewById(R.id.errormsg);
             errorMessage.setVisibility(View.INVISIBLE);
+
             Intent intent= new Intent(this, UserDashboard.class);
            // Intent intent= new Intent(this, ProfileInfo.class);
             startActivity(intent);

@@ -3,6 +3,11 @@ package com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
 
@@ -28,6 +33,7 @@ public class NewRequestService extends AsyncTask {
         StringBuilder responseOutput = new StringBuilder();
 
         try {
+            Log.i("NewRequestService","Sending New Request");
             RequestBean newRequset = (RequestBean) params[0];
             URL url = new URL(getUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -40,15 +46,13 @@ public class NewRequestService extends AsyncTask {
             conn.setDoOutput(true);
             conn.connect();
 
-            JSONObject requestJSON = new JSONObject();
-            requestJSON.put("userId",newRequset.getRequestId());
-            requestJSON.put("donor",newRequset.getDonor());
-            requestJSON.put("requester",newRequset.getRequester());
-            requestJSON.put("status",newRequset.getStatus());
-            requestJSON.put("requesterMessage",newRequset.getRequesterMessage());
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String newRequestString =gson.toJson(newRequset);
+            JsonObject jsonObj = new JsonParser().parse(newRequestString).getAsJsonObject();
+
 
             DataOutputStream printout = new DataOutputStream(conn.getOutputStream ());
-            printout.writeBytes(requestJSON.toString());
+            printout.writeBytes(jsonObj.toString());
             printout.flush ();
             printout.close ();
 
@@ -59,9 +63,9 @@ public class NewRequestService extends AsyncTask {
                 Log.i("User Data","=" +line);
                 responseOutput.append(line);
 
-                JSONArray jsonArray = new JSONArray(line);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject= jsonArray.getJSONObject(i);
+                JSONArray requests = new JSONArray(line);
+                for (int i = 0; i < requests.length(); i++) {
+                    JSONObject jsonObject= requests.getJSONObject(i);
                     RequestBean allRequesr= new RequestBean();
                     allRequesr.setRequestId(jsonObject.getInt("requestId"));
                     allRequesr.setDonor(UserDataHelper.getUserBeanFromJSON(jsonObject.getJSONObject("donor")));

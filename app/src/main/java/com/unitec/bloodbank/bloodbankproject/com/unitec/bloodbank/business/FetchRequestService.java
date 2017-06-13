@@ -2,6 +2,7 @@ package com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
 import com.unitec.bloodbank.bloodbankproject.LoginActivity;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
@@ -24,6 +25,7 @@ public class FetchRequestService extends AsyncTask {
 
     String getDonorUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getdonorrequests";
     String getRequesterUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getuserrequests";
+
 
     @Override
     protected Object doInBackground(Object... u) {
@@ -119,11 +121,17 @@ public class FetchRequestService extends AsyncTask {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject= jsonArray.getJSONObject(i);
                     RequestBean allRequesr= new RequestBean();
+
                     allRequesr.setRequestId(jsonObject.getInt("requestId"));
+
                     allRequesr.setDonor(UserDataHelper.getUserBeanFromJSON(jsonObject.getJSONObject("donor")));
+
                     allRequesr.setRequester(UserDataHelper.getUserBeanFromJSON(jsonObject.getJSONObject("requester")));
+
                     allRequesr.setStatus(jsonObject.getInt("status"));
+
                     allRequesr.setRequesterMessage(jsonObject.getString("requesterMessage"));
+
                     UserDataHelper.userRequests.add(allRequesr);
                 }
 
@@ -133,6 +141,8 @@ public class FetchRequestService extends AsyncTask {
 
             e.printStackTrace();
         }
+        UserDataHelper.categorizeRequests();
+
         return null;
     }
 

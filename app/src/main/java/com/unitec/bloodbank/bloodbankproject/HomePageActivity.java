@@ -80,7 +80,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                             UserBean userBean = userBloodModels.get(i);
                                             int userBeanId = userBean.getUserId();
-                                            Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                            Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                             intent.putExtra(USER_ID, userBeanId);
                                             startActivity(intent);
 
@@ -99,7 +99,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                             UserBean userBean = userBloodModels.get(i);
                                             int userBeanId = userBean.getUserId();
-                                            Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                            Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                             intent.putExtra(USER_ID, userBeanId);
                                             startActivity(intent);
                                             overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -120,7 +120,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -139,7 +139,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -164,7 +164,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -185,7 +185,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -204,7 +204,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -222,7 +222,7 @@ public class HomePageActivity extends AppCompatActivity {
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                         UserBean userBean = userBloodModels.get(i);
                                         int userBeanId = userBean.getUserId();
-                                        Intent intent = new Intent(HomePageActivity.this, DetailActivity.class);
+                                        Intent intent = new Intent(HomePageActivity.this, DonorDetails.class);
                                         intent.putExtra(USER_ID, userBeanId);
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

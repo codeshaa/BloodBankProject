@@ -15,7 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.RequestListViewAdapter;
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UpdateRequestService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.UserDataHelper;
 
 public class DonorDetailsDeclined extends AppCompatActivity {
@@ -23,42 +26,44 @@ public class DonorDetailsDeclined extends AppCompatActivity {
     public static final String USER_ADDRESS = "com.unitec.bloodbank.address";
     public static final String USER_BLOOD = "com.unitec.bloodbank.blood";
     public static final String USER_NAME = "com.unitec.bloodbank.name";
+    protected static RequestBean requestBean;
+    protected static UserBean donorBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
+        setContentView(R.layout.activity_donor_details_declined);
 
         TextView nameText = (TextView) findViewById(R.id.name_text);
         TextView bloodText = (TextView) findViewById(R.id.text_blood);
-        TextView addressText = (TextView) findViewById(R.id.text_address);
-        EditText userText = (EditText) findViewById(R.id.userEdittext);
-        Button btnSearchAgain = (Button) findViewById(R.id.buttonSearchAgain);
-        addressText.setMovementMethod(new ScrollingMovementMethod());
         String name = null;
 
         Intent intent = getIntent();
-        int message = intent.getIntExtra(HomePageActivity.USER_ID, 0);
-
-        for(UserBean userBean: UserDataHelper.userBeans){
-
-            if (userBean.getUserId() == message){
-                name = userBean.getGivenName() + " " + userBean.getSurname();
-                nameText.setText(name);
-                bloodText.setText(userBean.getBloodGroup());
-                addressText.setText(userBean.getAddress());
+        int requestId = intent.getIntExtra(RequestListViewAdapter.REQUEST_ID, 0);
+        for(RequestBean requestBean:UserDataHelper.userRequests){
+            if(requestBean.getRequestId()==requestId){
+                this.requestBean=requestBean;
+                this.donorBean=requestBean.getDonor();
                 break;
-
             }
         }
+
+            if (donorBean!=null){
+                name = donorBean.getGivenName() + " " + donorBean.getSurname();
+                nameText.setText(name);
+                bloodText.setText(donorBean.getBloodGroup());
+            }
+
+
+        Button btnSearchAgain = (Button) findViewById(R.id.buttonSearchAgain);
 
         btnSearchAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(DonorDetailsDeclined.this, HomePageActivity.class);
-                startActivity(intent);
+                requestBean.setStatus(3);
+                new UpdateRequestService().execute(requestBean);
+                Intent newintent = new Intent(DonorDetailsDeclined.this, HomePageActivity.class);
+                startActivity(newintent);
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });

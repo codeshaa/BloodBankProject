@@ -22,7 +22,9 @@ public class UserDataHelper {
     public static ArrayList<UserBean> userBeans=new ArrayList<UserBean>();
     public static ArrayList<RequestBean> userRequests=new ArrayList<RequestBean>();
     public static ArrayList<RequestBean> donorRequests=new ArrayList<RequestBean>();
-
+    public static ArrayList<RequestBean> userPendingRequests=new ArrayList<RequestBean>();
+    public static ArrayList<RequestBean> userAcceptedRequests=new ArrayList<RequestBean>();
+    public static ArrayList<RequestBean> userDeclinedRequests=new ArrayList<RequestBean>();
 
     public static boolean validateEmail(String email){
         return  email.matches(".+\\@.+\\..+");
@@ -57,8 +59,8 @@ public class UserDataHelper {
             userBean.setSurname(userJSON.getString("surname"));
             userBean.setDob(userJSON.getString("dob"));
             userBean.setGenderAsString(userJSON.getString("gender"));
-            userBean.setPhone(userJSON.getString("bloodGroup"));
-            userBean.setBloodGroup(userJSON.getString("phone"));
+            userBean.setPhone(userJSON.getString("phone"));
+            userBean.setBloodGroup(userJSON.getString("bloodGroup"));
             userBean.setEmail(userJSON.getString("email"));
             userBean.setAddress(userJSON.getString("address"));
             userBean.setLoginName(userJSON.getString("loginName"));
@@ -70,5 +72,22 @@ public class UserDataHelper {
         return  userBean;
     }
 
+    public static void categorizeRequests(){
+
+        Log.i("USerDataHelper","Size="+userRequests.size());
+        for(RequestBean bean:userRequests){
+            switch(bean.getStatus())
+            {
+                case 0: userPendingRequests.add(bean);
+                        break;
+                case 1: userAcceptedRequests.add(bean);
+                          break;
+                case 2: userDeclinedRequests.add(bean);
+                           break;
+
+            }
+        }
+
+    }
 }
 

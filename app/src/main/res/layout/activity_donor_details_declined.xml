@@ -62,6 +62,7 @@
         android:background="@color/colorPrimaryDark"
         android:text="Search again"
         android:textColor="@color/colorWhite"
+        android:clickable="true"
         android:textSize="24sp"
         android:textStyle="bold" />
 
