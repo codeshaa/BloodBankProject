@@ -91,29 +91,26 @@ public class UserDashboard extends AppCompatActivity {
     public void myRequestPage(){
         Intent intent= new Intent(this, MyRequestsActivity.class);
         startActivity(intent);
-        finish();
     }
     public void userRequestPage(){
         Intent intent= new Intent(this, RequestList.class);
         startActivity(intent);
-        finish();
     }
 
     public void searchPage(){
         Intent intent= new Intent(this, HomePageActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void profilePage(){
         Intent intent= new Intent(this, ProfileInfo.class);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void onBackPressed() {
         finish();
+
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

@@ -75,6 +75,9 @@ public class UserDataHelper {
     public static void categorizeRequests(){
 
         Log.i("USerDataHelper","Size="+userRequests.size());
+        userPendingRequests.removeAll(userPendingRequests);
+        userAcceptedRequests.removeAll(userAcceptedRequests);
+        userDeclinedRequests.removeAll(userDeclinedRequests);
         for(RequestBean bean:userRequests){
             switch(bean.getStatus())
             {

@@ -64,6 +64,7 @@ public class DonorDetailsDeclined extends AppCompatActivity {
                 new UpdateRequestService().execute(requestBean);
                 Intent newintent = new Intent(DonorDetailsDeclined.this, HomePageActivity.class);
                 startActivity(newintent);
+                finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
@@ -77,6 +78,7 @@ public class DonorDetailsDeclined extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        finish();
     }
 
     // Registering transition when menu back option selected

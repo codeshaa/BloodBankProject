@@ -1,5 +1,6 @@
 package com.unitec.bloodbank.bloodbankproject;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -190,7 +191,9 @@ public class MyRequestsActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent home = new Intent(MyRequestsActivity.this, UserDashboard.class );
+        startActivity(home);
+        finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

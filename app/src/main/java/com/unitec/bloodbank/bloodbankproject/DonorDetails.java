@@ -95,6 +95,7 @@ public class DonorDetails extends AppCompatActivity {
                 Toast.makeText(DonorDetails.this, "Your Request has been sent to the user.Please wait for approval", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DonorDetails.this, UserDashboard.class);
                 startActivity(intent);
+                finish();
 
 
             }
@@ -108,6 +109,7 @@ public class DonorDetails extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        finish();
     }
 
     // Registering transition when menu back option selected

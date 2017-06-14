@@ -212,7 +212,7 @@ public class HomePageActivity extends AppCompatActivity {
                                 });
                                 break;
 
-                    case "O-" : userBloodModels.clear();
+                        case "O-" : userBloodModels.clear();
                                 userBloodModels.addAll(oNegativeDonors);
                                 Toast.makeText(HomePageActivity.this, "You may receive only O- blood types", Toast.LENGTH_SHORT).show();
                                 adapter = new ListViewAdapter(userBloodModels, getApplicationContext());
@@ -247,7 +247,13 @@ public class HomePageActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent home = new Intent(HomePageActivity.this, UserDashboard.class );
+        startActivity(home);
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        finish();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

@@ -80,6 +80,7 @@ public class DetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(finalMobile));
                 startActivity(intent);
+
             }
         });
 
@@ -130,6 +131,7 @@ public class DetailActivity extends AppCompatActivity {
                    new UpdateRequestService().execute(requestBean);
                    Intent home = new Intent(DetailActivity.this, UserDashboard.class );
                    startActivity(home);
+                finish();
 
             }
         });
@@ -142,6 +144,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent home = new Intent(DetailActivity.this, UserDashboard.class );
         startActivity(home);
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        finish();
     }
 
     // Registering transition when menu back option selected

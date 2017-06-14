@@ -45,4 +45,11 @@ public class RequestList extends Activity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        Intent home = new Intent(RequestList.this, UserDashboard.class );
+        startActivity(home);
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
 }
