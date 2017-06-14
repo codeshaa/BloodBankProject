@@ -1,5 +1,6 @@
 package com.unitec.bloodbank.bloodbankproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -19,9 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.FetchRequestService;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.ListViewAdapter;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.business.RequestListViewAdapter;
@@ -43,7 +46,8 @@ public class MyRequestsActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
+    public static final String USER_ID = "com.unitec.bloodbank";
+    public static final String REQUEST_ID = "com.unitec.bloodbank";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,7 +151,34 @@ public class MyRequestsActivity extends AppCompatActivity {
             //set list adapter
             listView.setAdapter(adapter);
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
+                    RequestBean requestBean= null;
+                    switch(getArguments().getInt(ARG_SECTION_NUMBER)){
+                        case 1: requestBean=UserDataHelper.userPendingRequests.get(i);break;
+                        case 2: requestBean=UserDataHelper.userAcceptedRequests.get(i);break;
+                        case 3: requestBean=UserDataHelper.userDeclinedRequests.get(i);break;
+                    }
+                    if(requestBean != null){
+                        if(requestBean.getStatus()==0) {
+                            Snackbar.make(v, "Request is pending aproval with " + requestBean.getDonor().getGivenName(), Snackbar.LENGTH_LONG)
+                                .setAction("No action", null).show();
+                        }
+                         else if (requestBean.getStatus()==2){
+                           Intent intent= new Intent(getContext(),DonorDetailsDeclined.class);
+                            intent.putExtra(REQUEST_ID, requestBean.getRequestId());
+                            v.getContext().startActivity(intent);
+                        }
+                        else{
+                          Intent intent= new Intent(getContext(),DetailActivity.class);
+                            intent.putExtra(REQUEST_ID, requestBean.getRequestId());
+                            v.getContext().startActivity(intent);
+                        }
+                    }
 
+                }
+            });
             return rootView;
         }
     }
