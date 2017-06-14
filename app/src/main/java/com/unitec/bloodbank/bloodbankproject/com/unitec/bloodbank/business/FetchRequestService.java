@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.unitec.bloodbank.bloodbankproject.LoginActivity;
+import com.unitec.bloodbank.bloodbankproject.UserDashboard;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.RequestBean;
 import com.unitec.bloodbank.bloodbankproject.com.unitec.bloodbank.bean.UserBean;
 
@@ -26,7 +27,18 @@ public class FetchRequestService extends AsyncTask {
     String getDonorUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getdonorrequests";
     String getRequesterUrl = "https://bloodbankweb.mybluemix.net/bloodbank/getuserrequests";
 
+    @Override
+    protected void onPreExecute() {
+        UserDashboard.progress.setVisibility(View.VISIBLE);
+        super.onPreExecute();
+    }
 
+    @Override
+    protected void onPostExecute(Object o) {
+        UserDashboard.progress.setVisibility(View.GONE);
+
+        super.onPostExecute(o);
+    }
     @Override
     protected Object doInBackground(Object... u) {
 

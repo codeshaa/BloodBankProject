@@ -74,6 +74,9 @@
     <string name="title_activity_my_requests">My Requests</string>
     <string name="action_settings">Refresh</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="my_request">My Request</string>
+    <string name="updateuser_profile">Update Profile</string>
+    <string name="user_request">User Request</string>
 
 
 </resources>
